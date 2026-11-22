@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getDict, type Dict } from "@/lib/dict";
 import { locales, localeLabels, type Locale } from "@/lib/i18n";
 import { workItems, categoryMeta, type WorkCategory } from "@/lib/work";
+import { socialLinks } from "@/lib/social";
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
@@ -126,42 +127,68 @@ function LangSwitch({
 function Hero({ t }: { t: Dict }) {
   return (
     <section id="top" className="pixel-grid relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32 relative">
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-mono text-accent mb-6">
-          <span className="h-2 w-2 rounded-full bg-accent animate-pulse-slow" />
-          {t.hero.badge}
-        </div>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-          {t.hero.title1}
-          <br />
-          <span className="text-gradient">{t.hero.title2}</span>
-        </h1>
-        <p className="mt-6 max-w-xl text-lg text-muted leading-relaxed">
-          {t.hero.subtitle}
-        </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-medium text-white hover:bg-accent/80 glow transition-colors"
-          >
-            {t.hero.ctaPrimary}
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3.5 font-medium text-foreground hover:border-accent hover:bg-card transition-colors"
-          >
-            {t.hero.ctaSecondary}
-          </a>
-        </div>
-        <div className="mt-16 grid grid-cols-3 gap-6 max-w-md">
-          {t.hero.stats.map((s) => (
-            <div key={s.label}>
-              <div className="text-3xl md:text-4xl font-bold font-mono text-gradient">
-                {s.value}
-              </div>
-              <div className="mt-1 text-sm text-muted">{s.label}</div>
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 relative">
+        <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
+          {/* Left: copy */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-mono text-accent mb-6">
+              <span className="h-2 w-2 rounded-full bg-accent animate-pulse-slow" />
+              {t.hero.badge}
             </div>
-          ))}
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
+              {t.hero.title1}
+              <br />
+              <span className="text-gradient">{t.hero.title2}</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted leading-relaxed">
+              {t.hero.subtitle}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-medium text-white hover:bg-accent/80 glow transition-colors"
+              >
+                {t.hero.ctaPrimary}
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3.5 font-medium text-foreground hover:border-accent hover:bg-card transition-colors"
+              >
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
+            <div className="mt-14 grid grid-cols-3 gap-6 max-w-md">
+              {t.hero.stats.map((s) => (
+                <div key={s.label}>
+                  <div className="text-3xl md:text-4xl font-bold font-mono text-gradient">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-sm text-muted">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: hero visual — a real dubbing reel, image-led */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl border border-border glow aspect-[9/16] max-w-[360px] mx-auto">
+              <video
+                src="/work/dubbing/00-多语种演示合集片.mp4"
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-white/90 bg-black/40 px-2.5 py-1 rounded">
+                  13 Languages
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -192,24 +219,13 @@ function About({ t }: { t: Dict }) {
           <p>{t.about.p1}</p>
           <p>{t.about.p2}</p>
         </div>
-        <ul className="space-y-3">
-          {t.about.points.map((p) => (
-            <li
-              key={p}
-              className="flex items-start gap-3 rounded-xl border border-border bg-card p-4"
-            >
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-accent/20 text-accent">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M20 6L9 17l-5-5"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+        <ul className="border-l border-border pl-8 space-y-6">
+          {t.about.points.map((p, i) => (
+            <li key={p} className="relative">
+              <span className="absolute -left-[41px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent font-mono text-xs">
+                {i + 1}
               </span>
-              <span className="text-foreground">{p}</span>
+              <span className="text-foreground text-base leading-relaxed">{p}</span>
             </li>
           ))}
         </ul>
@@ -223,25 +239,30 @@ function Services({ t }: { t: Dict }) {
     <section id="services" className="bg-card/40 border-y border-border/50">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionTitle title={t.services.title} subtitle={t.services.subtitle} />
-        <div className="grid md:grid-cols-3 gap-6">
-          {t.services.items.map((s) => (
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-0">
+          {t.services.items.map((s, i) => (
             <div
               key={s.title}
-              className="card-hover rounded-2xl border border-border bg-background p-7"
+              className="group border-t border-border py-8 flex gap-8"
             >
-              <h3 className="text-xl font-bold">{s.title}</h3>
-              <p className="mt-3 text-muted leading-relaxed text-[15px]">
-                {s.desc}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {s.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-accent/10 border border-accent/30 px-2.5 py-1 text-xs font-mono text-accent"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="font-mono text-2xl font-bold text-accent/40 shrink-0 w-10">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold group-hover:text-accent transition-colors">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-muted leading-relaxed">{s.desc}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {s.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-accent/10 border border-accent/30 px-2.5 py-1 text-xs font-mono text-accent"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -343,12 +364,34 @@ function Process({ t }: { t: Dict }) {
   );
 }
 
+function SocialIcons({ className }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-3 ${className ?? ""}`}>
+      {socialLinks.map((s) => (
+        <a
+          key={s.id}
+          href={s.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={s.name}
+          title={s.name}
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-muted hover:text-foreground hover:border-accent hover:bg-card transition-colors"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d={s.icon} />
+          </svg>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function Contact({ t }: { t: Dict }) {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
       <div className="text-center">
         <SectionTitle title={t.contact.title} subtitle={t.contact.subtitle} />
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <a
             href="mailto:hello@pixforgestudios.com"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-medium text-white hover:bg-accent/80 glow transition-colors"
@@ -356,12 +399,15 @@ function Contact({ t }: { t: Dict }) {
             {t.contact.cta}
           </a>
           <a
-            href="#"
+            href="https://www.fiverr.com/kunwang821"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg border border-border px-7 py-3.5 font-medium text-foreground hover:border-accent hover:bg-card transition-colors"
           >
             {t.contact.fiverr}
           </a>
         </div>
+        <SocialIcons className="justify-center" />
       </div>
     </section>
   );
@@ -370,11 +416,17 @@ function Contact({ t }: { t: Dict }) {
 function Footer({ t }: { t: Dict }) {
   return (
     <footer className="border-t border-border/50">
-      <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <Logo />
+        <div className="flex flex-col items-center gap-3">
+          <span className="font-mono text-xs text-muted/80">{t.footer.findUs}</span>
+          <SocialIcons />
+        </div>
         <p className="text-sm text-muted">
           © 2026 PixForge Studios. {t.footer.rights}
         </p>
+      </div>
+      <div className="border-t border-border/30 py-3 text-center">
         <p className="font-mono text-xs text-muted/70">{t.footer.tagline}</p>
       </div>
     </footer>

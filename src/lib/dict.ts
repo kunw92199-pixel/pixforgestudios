@@ -46,6 +46,7 @@ export interface Dict {
   footer: {
     tagline: string;
     rights: string;
+    findUs: string;
   };
 }
 
@@ -131,6 +132,7 @@ export const en: Dict = {
   footer: {
     tagline: "Pixels forged into stories.",
     rights: "All rights reserved.",
+    findUs: "Find us on",
   },
 };
 
@@ -216,6 +218,7 @@ export const zh: Dict = {
   footer: {
     tagline: "像素，锻造成故事。",
     rights: "版权所有。",
+    findUs: "在以下平台找到我们",
   },
 };
 
