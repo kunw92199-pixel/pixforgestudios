@@ -41,7 +41,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", system-ui, -apple-system, sans-serif;
 }
 
 /* pixel grid backdrop */
@@ -71,10 +71,16 @@ body {
 
 /* crisp card border */
 .card-hover {
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--accent);
-  box-shadow: 0 20px 40px -20px rgba(124, 92, 255, 0.5);
+  box-shadow: 0 24px 48px -20px rgba(124, 92, 255, 0.55);
+}
+.card-hover:hover .card-media {
+  transform: scale(1.06);
+}
+.card-media {
+  transition: transform 0.35s ease;
 }

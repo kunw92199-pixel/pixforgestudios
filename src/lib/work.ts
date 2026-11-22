@@ -81,6 +81,14 @@ export const workItems: WorkItem[] = [
     desc: { en: "One video, thirteen languages — same voice.", zh: "一条视频，十三个语种——同一个声音。" },
     media: { type: "video", src: "/work/dubbing/00-多语种演示合集片.mp4" },
   },
+  // —— 短视频切片 ——
+  {
+    slug: "vertical-clip",
+    category: "short-clips",
+    title: { en: "Vertical Short — English Version", zh: "竖屏切片 — 英语版" },
+    desc: { en: "Platform-ready vertical clip, captioned and batch-edited.", zh: "可直接发布的竖屏切片，带字幕、批量剪辑。" },
+    media: { type: "video", src: "/work/dubbing/02-英语版.mp4" },
+  },
   // —— AI 视频 / 口型 ——
   {
     slug: "cinematic-character",

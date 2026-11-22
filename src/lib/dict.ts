@@ -84,11 +84,11 @@ export const en: Dict = {
   },
   services: {
     title: "What We Do",
-    subtitle: "Three core services, engineered for global reach.",
+    subtitle: "Four core services, engineered for global reach.",
     items: [
       {
         title: "AI Product Video Ads",
-        desc: "Turn product photos into social-ready video ads. AI-assisted short-form ad content for fashion and ecommerce brands — model shoots, campaign visuals, and motion.",
+        desc: "Turn product photos into scroll-stopping video ads. AI-assisted short-form ads for fashion and ecommerce brands — model shoots, campaign visuals, and motion.",
         tags: ["Fashion & ecommerce", "AI ads", "Model & product"],
       },
       {
@@ -169,11 +169,11 @@ export const zh: Dict = {
   },
   services: {
     title: "我们做什么",
-    subtitle: "三大核心服务，为全球触达而生。",
+    subtitle: "四大核心服务，为全球触达而生。",
     items: [
       {
         title: "AI 产品视频广告",
-        desc: "把产品照片变成社媒可用的视频广告。AI 辅助的短视频广告内容，服务时尚与电商品牌——模特拍摄、活动视觉、动态制作。",
+        desc: "把产品照片变成让人停下滑动的视频广告。AI 辅助的短视频广告，服务时尚与电商品牌——模特拍摄、营销视觉、动态包装。",
         tags: ["时尚 & 电商", "AI 广告", "模特 & 产品"],
       },
       {

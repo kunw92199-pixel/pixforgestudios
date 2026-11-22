@@ -285,7 +285,7 @@ function Work({ t, locale }: { t: Dict; locale: Locale }) {
             key={w.slug}
             className="card-hover group overflow-hidden rounded-2xl border border-border bg-card"
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-background">
+            <div className="relative aspect-[4/3] overflow-hidden bg-background card-media">
               {w.media.type === "video" ? (
                 <video
                   src={w.media.src}
