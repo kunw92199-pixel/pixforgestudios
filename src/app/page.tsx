@@ -274,7 +274,7 @@ function Services({ t }: { t: Dict }) {
 
 function Work({ t, locale }: { t: Dict; locale: Locale }) {
   const [cat, setCat] = useState<WorkCategory | "all">("all");
-  const cats: (WorkCategory | "all")[] = ["all", "product-ads", "dubbing", "short-clips", "ai-video"];
+  const cats: (WorkCategory | "all")[] = ["all", "dubbing", "short-clips", "ai-video"];
   const items = cat === "all" ? workItems : workItems.filter((w) => w.category === cat);
 
   return (
